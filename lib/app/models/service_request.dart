@@ -33,7 +33,7 @@ import 'address.dart';
   }''',
   ),
 )
-class ServiceRequest
+class ServiceRequest extends OfflineFirstWithRestModel
 {
   @Sqlite(unique: true)
   @Rest(name: 'ObjectID')
@@ -46,7 +46,7 @@ class ServiceRequest
   final String subject;
 
   @OfflineFirst(where: {'parentId': "data['ObjectID']"})
-  @Rest(name: 'objectId')
+  @Rest(ignoreTo: true)
   final ServiceRequestText workDescription;
 
   @Rest(name: 'LX_PRD_PD1')
@@ -58,26 +58,26 @@ class ServiceRequest
   @Rest(name: 'ServicePerformerPartyID')
   final String technicianId;
 
-  @OfflineFirst(where: {'parentId': "data['ServicePerformerPartyID']"})
-  @Rest(name: 'ServicePerformerPartyID')
+  @OfflineFirst(where: {'employeeId': "data['ServicePerformerPartyID']"})
+  @Rest(ignoreTo: true)
   final Employee technician;
 
   @Rest(name: 'BuyerPartyID')
   final String customerId;
 
-  @OfflineFirst(where: {'parentId': "data['BuyerPartyID']"})
-  @Rest(name: 'BuyerPartyID')
+  @OfflineFirst(where: {'customerId': "data['BuyerPartyID']"})
+  @Rest(ignoreTo: true)
   final Customer customer;
 
   @Rest(name:'LX_PRD_SN1')
   final String serialNumber;
 
   @OfflineFirst(where: {'parentId': "data['ObjectID']"})
-  @Rest(name: 'objectId')
+  @Rest(ignoreTo: true)
   final List <ServiceRequestItem> items;
 
   @OfflineFirst(where: {'parentId': "data['ObjectID']"})
-  @Rest(name: 'objectId')
+  @Rest(ignoreTo: true)
   final Address serviceLocation;
 
   @Rest(ignore: true)

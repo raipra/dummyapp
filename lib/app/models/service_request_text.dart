@@ -28,13 +28,13 @@ import 'package:brick_offline_first/offline_first_with_rest.dart';
   }''',
   ),
 )
-class ServiceRequestText
+class ServiceRequestText extends OfflineFirstWithRestModel
 {
   @Rest(name: 'ObjectID')
   final String objectId;
 
   @Rest(name: 'ParentObjectID')
-  final String parentObjectId;
+  final String parentId;
 
   @Rest(name: 'Text')
   final String text;
@@ -45,6 +45,6 @@ class ServiceRequestText
   @Rest(name: 'ServiceRequestID')
   final String serviceRequestId;
 
-  ServiceRequestText({this.objectId, this.parentObjectId, this.text, this.typeCode, this.serviceRequestId});
+  ServiceRequestText({this.objectId, this.parentId, this.text, this.typeCode, this.serviceRequestId});
 
 }

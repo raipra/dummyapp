@@ -27,11 +27,11 @@ import 'package:brick_offline_first/offline_first_with_rest.dart';
   }''',
   ),
 )
-class Address
+class Address extends OfflineFirstWithRestModel
 {
   
   @Rest(name: 'ParentObjectID')
-  final String parentObjectId;
+  final String parentId;
 
   @Rest(name: 'City')
   final String city;
@@ -54,7 +54,7 @@ class Address
   @Rest(name: 'Mobile')
   final String mobile;
 
-  Address({this.parentObjectId, this.city, this.street, this.email, this.country, this.countryText, 
+  Address({this.parentId, this.city, this.street, this.email, this.country, this.countryText, 
   this.phone, this.mobile});
 
 }

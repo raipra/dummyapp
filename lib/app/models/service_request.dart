@@ -5,7 +5,34 @@ import 'service_request_item.dart';
 import 'service_request_text.dart';
 import 'address.dart';
 
-
+@ConnectOfflineFirstWithRest(
+  restConfig: RestSerializable(
+    endpoint: r'''{
+    if (query.action == QueryAction.upsert) {
+      return "/ServiceRequestCollection";
+    }
+    if (query.action == QueryAction.get && query?.where != null) {
+      final byId = Where.firstByField('ObjectID', query.where);
+      // member endpoint
+      if (byId != null && byId.value != null) {
+        return "/ServiceRequestCollection(\'${byId.value}\')";
+      }
+      
+    }
+    if (query.action == QueryAction.get && query?.where != null) {
+      final byId = Where.firstByField('ID', query.where);
+      // member endpoint
+      if (byId != null && byId.value != null) {
+        return "/ServiceRequestCollection?\$filter=ID eq '${byId.value}'";
+      }
+    }  
+    if (query.action == QueryAction.get) {
+      return "/ServiceRequestCollection";
+    }
+    return null;
+  }''',
+  ),
+)
 class ServiceRequest
 {
   @Sqlite(unique: true)

@@ -3,26 +3,32 @@ import 'package:brick_offline_first/offline_first_with_rest.dart';
 class Product
 {
   @Rest(name: 'ObjectID')
-  String objectId;
+  final String objectId;
 
   @Rest(name: 'ProductID')
-  String productId;
+  final String productId;
 
   @Rest(name: 'Description')
-  String productDescription;
+  final String productDescription;
 
   @Rest(name: 'LX_PRD_MI')
-  String modelId;
+  final String modelId;
 
   @Rest(name: 'Language')
-  String language;
+  final String language;
 
   @Rest(name: 'LX_PRD_TYP_KUT')
-  String productType;
+  final String productType;
 
   @Rest(name: 'LX_PRD_CA')
-  String connectedAppliance;
+  final String connectedAppliance;
 
   @Rest(name: 'LX_PRD_PGText')
-  String productGroup;
+  final String productGroup;
+
+  Product.name({this.objectId, this.productId, this.productDescription,
+      this.modelId, this.language, this.productType, this.connectedAppliance,
+      this.productGroup});
+
+
 }

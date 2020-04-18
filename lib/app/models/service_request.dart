@@ -13,59 +13,89 @@ class ServiceRequest
   final String subject;
 
   @OfflineFirst(where: {'parentId': "data['ObjectID']"})
-  @Rest(name: 'workDescriptions')
-  Text workDescription;
+  @Rest(name: 'objectId')
+  final Text workDescription;
 
   @Rest(name: 'LX_PRD_PD1')
-  bool inWarranty;
+  final bool inWarranty;
 
+  @Rest(name: 'ProductID')
+  final String productId;
+
+  @Rest(name: 'ServicePerformerPartyID')
+  final String technicianId;
+
+  @Rest(name: 'BuyerPartyID')
+  final String customerId;
+
+  @OfflineFirst(where: {'parentId': "data['BuyerPartyID']"})
+  @Rest(name: 'BuyerPartyID')
+  final Customer customer;
+
+  @Rest(name:'LX_PRD_SN1')
+  final String serialNumber;
+
+  @OfflineFirst(where: {'parentId': "data['ObjectID']"})
+  @Rest(name: 'objectId')
   List <ServiceRequestItem> items;
+
+  @OfflineFirst(where: {'parentId': "data['ObjectID']"})
+  @Rest(name: 'objectId')
   Address serviceLocation;
-  Customer customer;
-  Visit visitDetails;
-  BillingDetails billing;
-  TechnicianReport technicianReport;
+
+  @Rest(name: '')
   DateTime plannedStartDate;
   DateTime plannedEndDate;
+
+  @Rest(name: 'LX_TKT_ASTDT')
   DateTime actualVisitStartDate;
+
+  @Rest(name: 'LX_TKT_AENDT')
   DateTime actualVisitEndDate;
+
+  @Rest(ignore: true)
   double paymentAmount;
+
+  @Rest(ignore: true)
   String paymentID;
+
+  @Rest(ignore: true)
   String paymentStatus;
+
+  @Rest(name: 'LX_TCK_CC')
   String paymentMethod;
+
+  @Rest(name: 'LX_TCK_EScontent')
   double plannedAmount;
+
+  @Rest(ignore: true)
   double actualAmount;
+
+  @Rest(ignore: true)
   double maxAmount;
 
+  @Rest(name: 'LX_TXT_FCK')
   String faultCodeKey;
+
+  @Rest(name: 'LX_TXT_CC')
   String componentCode;
+
+  @Rest(name: 'LX_TXT_DC')
   String defectCode;
+
+  @Rest(name: 'LX_TCK_FR')
   String faultReported;
+
+  @Rest(name: 'LX_TCK_EC')
   String errorCode;
 
-
-}
-
-class ServiceRequestItem
-{
-  String partID;
-  double plannedQuantity;
-  double actualQuantity;
-  String technicianName;
-  String partDescripiton;
+  @Rest(name: 'LX_TCK_AT')
+  String actionTaken;
 
 
 }
-class Customer
-{
-  String customerId;
-  String firstName;
-  String lastName;
-  String mobileNumber;
-  String homeNumber;
-  String email;
-  String language;
-}
+
+
 
 class ServiceLocation
 {

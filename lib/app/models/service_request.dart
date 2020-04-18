@@ -1,4 +1,10 @@
 import 'package:brick_offline_first/offline_first_with_rest.dart';
+import 'employee.dart';
+import 'customer.dart';
+import 'service_request_item.dart';
+import 'service_request_text.dart';
+import 'address.dart';
+
 
 class ServiceRequest
 {
@@ -14,7 +20,7 @@ class ServiceRequest
 
   @OfflineFirst(where: {'parentId': "data['ObjectID']"})
   @Rest(name: 'objectId')
-  final Text workDescription;
+  final ServiceRequestText workDescription;
 
   @Rest(name: 'LX_PRD_PD1')
   final bool inWarranty;
@@ -24,6 +30,10 @@ class ServiceRequest
 
   @Rest(name: 'ServicePerformerPartyID')
   final String technicianId;
+
+  @OfflineFirst(where: {'parentId': "data['ServicePerformerPartyID']"})
+  @Rest(name: 'ServicePerformerPartyID')
+  final Employee technician;
 
   @Rest(name: 'BuyerPartyID')
   final String customerId;
@@ -37,74 +47,67 @@ class ServiceRequest
 
   @OfflineFirst(where: {'parentId': "data['ObjectID']"})
   @Rest(name: 'objectId')
-  List <ServiceRequestItem> items;
+  final List <ServiceRequestItem> items;
 
   @OfflineFirst(where: {'parentId': "data['ObjectID']"})
   @Rest(name: 'objectId')
-  Address serviceLocation;
+  final Address serviceLocation;
 
-  @Rest(name: '')
-  DateTime plannedStartDate;
-  DateTime plannedEndDate;
+  @Rest(ignore: true)
+  final DateTime plannedStartDate;
+  
+  @Rest(ignore: true)
+  final DateTime plannedEndDate;
 
   @Rest(name: 'LX_TKT_ASTDT')
-  DateTime actualVisitStartDate;
+  final DateTime actualVisitStartDate;
 
   @Rest(name: 'LX_TKT_AENDT')
-  DateTime actualVisitEndDate;
+  final DateTime actualVisitEndDate;
 
   @Rest(ignore: true)
-  double paymentAmount;
+  final double paymentAmount;
 
   @Rest(ignore: true)
-  String paymentID;
+  final String paymentID;
 
   @Rest(ignore: true)
-  String paymentStatus;
+  final String paymentStatus;
 
   @Rest(name: 'LX_TCK_CC')
-  String paymentMethod;
+  final String paymentMethod;
 
   @Rest(name: 'LX_TCK_EScontent')
-  double plannedAmount;
+  final double plannedAmount;
 
   @Rest(ignore: true)
-  double actualAmount;
+  final double actualAmount;
 
   @Rest(ignore: true)
-  double maxAmount;
+  final double maxAmount;
 
   @Rest(name: 'LX_TXT_FCK')
-  String faultCodeKey;
+  final String faultCodeKey;
 
   @Rest(name: 'LX_TXT_CC')
-  String componentCode;
+  final String componentCode;
 
   @Rest(name: 'LX_TXT_DC')
-  String defectCode;
+  final String defectCode;
 
   @Rest(name: 'LX_TCK_FR')
-  String faultReported;
+  final String faultReported;
 
   @Rest(name: 'LX_TCK_EC')
-  String errorCode;
+  final String errorCode;
 
   @Rest(name: 'LX_TCK_AT')
-  String actionTaken;
+  final String actionTaken;
+
+  
+  ServiceRequest({this.technician, this.objectId, this.serviceRequestID, this.subject, this.workDescription, this.inWarranty, this.productId, this.technicianId, this.customerId, this.customer, this.serialNumber, this.items, this.serviceLocation, this.plannedStartDate, this.plannedEndDate, this.paymentAmount, this.paymentID, this.paymentStatus, this.paymentMethod, this.plannedAmount, this.actualAmount, this.maxAmount, this.faultCodeKey, this.componentCode, this.defectCode, this.faultReported, this.errorCode, this.actionTaken, this.actualVisitStartDate, this.actualVisitEndDate});
 
 
 }
 
-
-
-class ServiceLocation
-{
-  String city;
-  String country;
-  String streetName;
-  String houseNumber;
-  String postalCode;
-  String region;
-
-}
 

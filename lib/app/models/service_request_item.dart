@@ -4,35 +4,36 @@ import 'package:brick_offline_first/offline_first_with_rest.dart';
 class ServiceRequestItem
 {
   @Rest(name: 'ID')
-  String itemId;
+  final  String itemId;
 
   @Rest(name: 'ObjectID')
-  String objectId;
+  final String objectId;
 
   @Rest(name: 'ParentObjectID')
-  String parentId;
+  final String parentId;
 
   @Rest(name: 'PlannedQuantity')
-  double plannedQuantity;
+  final double plannedQuantity;
 
   @Rest(name: 'ActualQuantity')
-  double actualQuantity;
+  final double actualQuantity;
 
   @Rest(name: 'ServicePerformerPartyID')
-  String technicianId;
+  final String technicianId;
 
   @Rest(name: 'ProductID')
-  String partId;
-
+  final String partId;
 
   @Rest(name: 'Description')
-  String partDescription;
+  final String partDescription;
 
   @Rest(name: 'UserServiceTransactionProcessingTypeCode')
-  String processingTypeCode;
+  final String processingTypeCode;
 
   @Rest(name: 'WarrantyGoodwillCode')
-  String coverageCode;
+  final String coverageCode;
+
+  ServiceRequestItem({this.itemId, this.objectId, this.parentId, this.plannedQuantity, this.actualQuantity, this.technicianId, this.partId, this.partDescription, this.processingTypeCode, this.coverageCode});
 
 
 

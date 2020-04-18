@@ -32,4 +32,6 @@ class Employee
 
   @Rest(name: 'LanguageCodeText')
   final String language;
+
+  Employee({this.objectId, this.employeeId, this.firstName, this.lastName, this.country, this.city, this.mobileNumber, this.street, this.email, this.language});
 }

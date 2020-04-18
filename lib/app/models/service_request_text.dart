@@ -17,4 +17,6 @@ class ServiceRequestText
   @Rest(name: 'ServiceRequestID')
   final String serviceRequestId;
 
+  ServiceRequestText({this.objectId, this.parentObjectId, this.text, this.typeCode, this.serviceRequestId});
+
 }

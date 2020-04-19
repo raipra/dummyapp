@@ -3,15 +3,15 @@ import 'package:brick_sqlite_abstract/db.dart';
 // ignore: unused_import, unused_shown_name
 import 'package:brick_offline_first/offline_first_with_rest.dart';
 // ignore: unused_import, unused_shown_name
-import 'employee.dart';
+import 'models/employee.dart';
 // ignore: unused_import, unused_shown_name
-import 'customer.dart';
+import 'models/customer.dart';
 // ignore: unused_import, unused_shown_name
-import 'service_request_item.dart';
+import 'models/service_request_item.dart';
 // ignore: unused_import, unused_shown_name
-import 'service_request_text.dart';
+import 'models/service_request_text.dart';
 // ignore: unused_import, unused_shown_name
-import 'address.dart';// GENERATED CODE DO NOT EDIT
+import 'models/address.dart';// GENERATED CODE DO NOT EDIT
 // This file should NOT be version controlled and should not be manually edited.
 // ignore: unused_import
 import 'dart:convert';
@@ -23,11 +23,6 @@ import 'package:brick_core/core.dart' show Query, QueryAction;
 import 'package:sqflite/sqflite.dart' show DatabaseExecutor;
 
 import 'models/service_request.dart';
-import 'models/customer.dart';
-import 'models/service_request_text.dart';
-import 'models/address.dart';
-import 'models/service_request_item.dart';
-import 'models/employee.dart';
 
 part 'adapters/service_request_adapter.g.dart';
 part 'adapters/customer_adapter.g.dart';
